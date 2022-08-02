@@ -6,13 +6,17 @@ let tasks = [];
  * 
  * @param {string} page - This parameter is the current selected html page
  */
-async function init (page){
-    currentPage = page;
-    await includeHTML();
-    await downloadFromServer();
-    tasks = JSON.parse(backend.getItem('tasks'))|| [];
-    navbarSelection(page);
-    forwardingNextFunctions(page);
+async function init(page) {
+    if (page == 'index') {
+        openPage('board.html')
+    } else {
+        currentPage = page;
+        await includeHTML();
+        await downloadFromServer();
+        tasks = JSON.parse(backend.getItem('tasks')) || [];
+        navbarSelection(page);
+        forwardingNextFunctions(page);
+    }
 }
 
 /**
@@ -20,9 +24,9 @@ async function init (page){
  * This function is used to show the navbar
  * @param {string} page - This parameter is the current selected html page
  */
-function navbarSelection(page){
-    if(page != 'index'){
-        document.getElementById('navbarLinksSelection_' +page).style.backgroundColor = 'white' ;
+function navbarSelection(page) {
+    if (page != 'index') {
+        document.getElementById('navbarLinksSelection_' + page).style.backgroundColor = 'white';
     }
 }
 
@@ -31,11 +35,11 @@ function navbarSelection(page){
  * 
  * @param {string} page - This parameter is the current selected html page
  */
-function forwardingNextFunctions(page){
-    if(page == 'board'){
+function forwardingNextFunctions(page) {
+    if (page == 'board') {
         renderTasksAtBoard();
     }
-    if(page == 'backlog'){
+    if (page == 'backlog') {
         renderBacklogTasks();
     }
 }
@@ -54,6 +58,6 @@ async function saveTasks() {
  * 
  * @param {string} page - This parameter is the current selected html page
  */
- function openPage(site) {
-    window.open(site , "_self");
+function openPage(site) {
+    window.open(site, "_self");
 }
