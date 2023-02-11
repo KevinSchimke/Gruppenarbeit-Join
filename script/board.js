@@ -27,9 +27,9 @@ function dropTask(newStatus) {
     tasks[currentDraggedElement]['status'] = newStatus;
     Array.from(document.getElementsByClassName('area_toDo_draganddrop')).forEach(
         function (element) {
-            element.classList.remove('area_toDo_draganddrop');  
-            }
-        );
+            element.classList.remove('area_toDo_draganddrop');
+        }
+    );
     endMoveToOtherBoard();
 }
 
@@ -37,7 +37,7 @@ function dropTask(newStatus) {
  * This function ends the drag
  * 
  */
-async function endMoveToOtherBoard(){
+async function endMoveToOtherBoard() {
     await saveTasks()
     renderTasksAtBoard();
 }
@@ -48,7 +48,7 @@ async function endMoveToOtherBoard(){
  * @param {string} overColumn - This parameter is the hovered column at board
  */
 function addHighlight(overColumn) {
-    document.getElementById('tasks_'+`${overColumn}`).classList.add('area_toDo_draganddrop');
+    document.getElementById('tasks_' + `${overColumn}`).classList.add('area_toDo_draganddrop');
 }
 
 /**
@@ -57,7 +57,7 @@ function addHighlight(overColumn) {
  * @param {string} besideColumn - This parameter was the hovered column at board
  */
 function removeHighlight(besideColumn) {
-    document.getElementById('tasks_'+`${besideColumn}`).classList.remove('area_toDo_draganddrop');
+    document.getElementById('tasks_' + `${besideColumn}`).classList.remove('area_toDo_draganddrop');
 }
 
 /**
@@ -77,7 +77,7 @@ function renderTasksAtBoard() {
  * @param {string} board - This parameter is the column at board
  */
 function renderBoards(board) {
-    let content = document.getElementById('tasks_'+board);
+    let content = document.getElementById('tasks_' + board);
     content.innerHTML = '';
     let boardFiltered = tasks.filter(t => t['status'] == board)
     for (let i = 0; i < boardFiltered.length; i++) {
@@ -88,6 +88,7 @@ function renderBoards(board) {
         getTodoBorderLeft(taskID, color);
     }
 }
+
 
 /**
  * This function is used to set the border with different colors depeneding on urgency

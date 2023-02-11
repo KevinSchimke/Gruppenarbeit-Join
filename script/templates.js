@@ -72,7 +72,7 @@ function templateEditTask(id) {
                         <div class="btnContainer">
                             <button onclick="deleteTask(${id})" class="createbtn background_4" type="submit">Delete</button>
                             <button class="createbtn" type="submit">SAVE EDIT</button>
-                            <button onclick="moveToBoard(${id})" class="createbtn background_3" type="submit">Move to Board</button>
+                            <button id="buttonMoveToBoard" onclick="moveToBoard(${id})" class="createbtn background_3" type="submit">Move to Board</button>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ function templateEditTask(id) {
  */
 function templateRenderBoards(index, task) {
     return /*html*/`
-    <div ondragstart="startDragging(${index})" draggable="true" id="board_task_${index}" class="board_task">
+    <div onclick="openSingleView(${index})" ondragstart="startDragging(${index})" draggable="true" id="board_task_${index}" class="board_task">
         <p class="board_task_date">${task['date']}</p>
         <p class="board_task_title">${task['title']}</p>
         <p id="user_name_board${index}" class="board_task_assigned_name">${task['user']}</p>

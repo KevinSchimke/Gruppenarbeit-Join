@@ -41,6 +41,7 @@
 
 .board_task:hover {
     background: #cfd2df;
+    cursor: pointer;
 }
 
 .board_task_date {
@@ -66,8 +67,6 @@
     overflow-y: hidden;
 }
 
-
-
 /*
 Media Queries 
 backlog.html */
@@ -75,9 +74,10 @@ backlog.html */
 
 
 @media (max-width: 1000px) {
-    #tasks_todo, #tasks_testing{
+    #tasks_todo, #tasks_testing {
         border-left: 1px dotted grey;
     }
+
     .content_board {
         flex-wrap: wrap;
         align-items: flex-start;
@@ -104,9 +104,10 @@ backlog.html */
 }
 
 @media (max-width: 750px) {
-    #tasks_todo, #tasks_testing{
+    #tasks_todo, #tasks_testing {
         border-left: unset;
     }
+
     .board_columns {
         height: 40vh;
         width: 95%;

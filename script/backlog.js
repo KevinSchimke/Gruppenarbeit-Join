@@ -61,7 +61,14 @@ function editTask(id) {
     let content = document.getElementById('task_overlay');
     content.innerHTML = '';
     content.innerHTML = templateEditTask(id);
+    disableButton();
     loadInfosEditTask(id);
+}
+
+function disableButton() {
+    if (window.location.pathname == "/board.html") {
+        document.getElementById('buttonMoveToBoard').classList.add('d-none')
+    }
 }
 
 /**
@@ -69,9 +76,9 @@ function editTask(id) {
  * 
  * @param {number} id - This parameter is the position at the tasks array
  */
-function loadInfosEditTask(id){
+function loadInfosEditTask(id) {
     document.getElementById('title').value = tasks[id]['title'];
-    document.getElementById('date').value =  tasks[id]['date'];
+    document.getElementById('date').value = tasks[id]['date'];
     document.getElementById('urgency').value = tasks[id]['urgency'];
     document.getElementById('description').value = tasks[id]['description'];
 }
@@ -92,7 +99,7 @@ async function saveEdit(id) {
  * 
  * @param {number} id - This parameter is the position at the tasks array
  */
-function overwriteInfosEditTask(id){
+function overwriteInfosEditTask(id) {
     tasks[id]['title'] = document.getElementById('title').value
     tasks[id]['date'] = document.getElementById('date').value
     tasks[id]['category'] = document.getElementById('catagory').value
@@ -105,7 +112,7 @@ function overwriteInfosEditTask(id){
  * 
  * @param {number} i - This parameter is the position at the tasks array
  */
-async function deleteTask(i) { 
+async function deleteTask(i) {
     tasks.splice(i, 1);
     setNewIdForEachTask();
     await saveTasks();
@@ -117,9 +124,9 @@ async function deleteTask(i) {
  * 
  * @param {number} id - This parameter is the position at the tasks array
  */
-async function moveToBoard(id){
+async function moveToBoard(id) {
     currentStatus = tasks[id]['status'];
-    if(currentStatus == 'backlog'){
+    if (currentStatus == 'backlog') {
         tasks[id]['status'] = 'todo'
     }
     await saveTasks();
@@ -130,7 +137,7 @@ async function moveToBoard(id){
  * This function is used to set task id to its position of tasks array if its not empty
  */
 function setNewIdForEachTask() {
-        for (let i = 0; i < tasks.length; i++) {
-            tasks[i]['id'] = i;
-        }
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i]['id'] = i;
+    }
 }
